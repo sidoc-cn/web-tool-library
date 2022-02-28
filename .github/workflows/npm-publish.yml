@@ -13,6 +13,7 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm install
-      - run: npm publish
+      # - run: npm publish --access public
+      - run: npm run build # 这是我的项目的打包命令，你也可以改成你的
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
