@@ -1,12 +1,22 @@
 # name属性用来指定这个工作流的名字
-name: npm-publish
+name: npm-auto-publish
+
+# 这个部分用来指定能够触发工作流执行的事件
 on:
+  # 当对分支main进行push操作的时候，这个工作流就被触发了
+  push:
+    branches: [ master ]
   push:
     branches:
       - main # Change this to your default branch
+
+# 工作流是由一个或多个的jobs构成的，在jobs里来说明要交给GitHub aciton执行的任务
 jobs:
-  npm-publish:
-    name: npm-publish
+
+  # 这个jobs中的一个任务，名字叫build(随便怎么取)
+  npm-auto-publish:
+    name: npm-auto-publish
+    # 用来指定这个任务在什么操作系统上跑(服务器是GitHub免费提供的)
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -19,7 +29,7 @@ jobs:
         create_tag: "true"
         commit_pattern: "^Release (\\S+)"
         workspace: "."
-        publish_command: "yarn"
+        publish_command: "npm"
         publish_args: "--non-interactive"
       env: # More info about the environment variables in the README
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Leave this as is, it's automatically generated
