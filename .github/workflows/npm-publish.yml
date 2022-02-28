@@ -16,4 +16,5 @@ jobs:
       - run: npm run build # 这是我的项目的打包命令，你也可以改成你的
       - run: npm publish --access public
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
