@@ -1,6 +1,8 @@
-name: Public Npm
+# name属性用来指定这个工作流的名字
+name: npm-auto-publish
 
 on:
+  # 当对分支main进行push操作的时候，这个工作流就被触发了
   push:
     branches: [ master ]
 
@@ -8,7 +10,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
-    name: 'publish npm'
+    name: 'npm-auto-publish'
 
     environment: npm
 
