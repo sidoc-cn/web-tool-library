@@ -1,6 +1,6 @@
 {
   "name": "web-tool-library",
-  "version": "0.1.30",
+  "version": "0.1.31",
   "private": false,
   "main": "src/index.js",
   "description": "前端自定义常用工具、函数、组件等",
