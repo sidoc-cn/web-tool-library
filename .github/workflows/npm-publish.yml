@@ -1,6 +1,5 @@
 # name属性用来指定这个工作流的名字
 name: npm-publish
-
 # on指定触发工作流执行的事件
 on:
   # 当对master分支进行push操作时，触发此工作流执行
@@ -19,11 +18,9 @@ jobs:
     environment: npm
     steps:
       # github actions 自带插件主要是为了检出当前仓库的代码
-      - name 'fdsf'
       - uses: actions/checkout@v2
 
       # name为该条命令的名字 随便取名字
-      - name 'fdsf111'
       # 在当前操作系统安装node.js
       - uses: actions/setup-node@v2
         with:
