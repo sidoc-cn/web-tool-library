@@ -1,8 +1,10 @@
 # name属性用来指定这个工作流的名字
 name: npm-publish
 
+# on指定触发工作流执行的事件
 on: push
-  
+
+# 工作流是由一个或多个的jobs构成，在jobs里来说明要交给GitHub aciton执行的任务
 jobs:
   # 这是jobs中的一个任务，名字叫npm-publish(随便怎么取名)
   npm-publish:
