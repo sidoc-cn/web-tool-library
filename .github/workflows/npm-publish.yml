@@ -13,11 +13,11 @@ jobs:
     environment: npm
     steps:
       # github actions 自带插件主要是为了检出当前仓库的代码
-      - name fdsf
+      - name: fdsf
       - uses: actions/checkout@v2
 
       # name为该条命令的名字 随便取名字
-      - name fdsf111
+      - name: fdsf111
       # 在当前操作系统安装node.js
       - uses: actions/setup-node@v2
         with:
