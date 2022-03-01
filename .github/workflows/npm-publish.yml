@@ -1,11 +1,7 @@
 name: npm-publish
 
-on:
-  # 当对master分支进行push操作时，触发此工作流执行
-  push:
-    branches: [master]
-
-# 工作流是由一个或多个的jobs构成，在jobs里来说明要交给GitHub aciton执行的任务
+on: push
+  
 jobs:
   # 这是jobs中的一个任务，名字叫npm-publish(随便怎么取名)
   npm-publish:
