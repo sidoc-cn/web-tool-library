@@ -27,8 +27,6 @@ jobs:
       # 运行shell命令
       # 重新清理并安装项目，相当于npm先清理再安装
       - run: npm ci
-      # 编译项目
-      - run: npm run build
       # 发布npm包
       - run: npm publish 
         env:
