@@ -24,10 +24,10 @@ jobs:
 
       # name为该条命令的名字 随便取名字
       - name 'fdsf111'
-      # 在当前操作系统安装node
+      # 在当前操作系统安装node.js
       - uses: actions/setup-node@v2
         with:
-          node-version: '16.x'
+          node-version: '16.x' # 指定node.js版本
           registry-url: 'https://registry.npmjs.org'
       - run: npm ci
       - run: npm publish 
