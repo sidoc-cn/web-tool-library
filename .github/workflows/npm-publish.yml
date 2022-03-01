@@ -9,7 +9,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    environment: npm
+    environment: npm-publish
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
