@@ -1,6 +1,6 @@
 {
   "name": "web-tool-library",
-  "version": "0.1.50",
+  "version": "0.1.52",
   "private": false,
   "main": "src/index.js",
   "description": "前端自定义常用工具、函数、组件等",
@@ -12,6 +12,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "npm-publish": "node build-before-hook.js && node build-after-hook.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
