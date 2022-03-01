@@ -2,7 +2,11 @@
 name: npm-publish
 
 # on指定触发工作流执行的事件
-on: push
+# on: push
+on:
+  # 当对main分支进行push操作时，触发此工作流执行
+  push:
+    branches: [main]
 
 # 工作流是由一个或多个的jobs构成，在jobs里来说明要交给GitHub aciton执行的任务
 jobs:
@@ -18,7 +22,7 @@ jobs:
       # 使用Github Actions自带的插件
       # 检出当前仓库的代码
       - uses: actions/checkout@v2
-      # 在当前操作系统安装node.js，可指定node.js的版本
+      # 在当前操作系统安装并缓存node.js，可指定node.js的版本
       - uses: actions/setup-node@v2
         with:
           node-version: '16.x' # 指定node.js版本
@@ -28,7 +32,7 @@ jobs:
       # 重新清理并安装项目，相当于npm先清理再安装
       - run: npm ci
       # 编译项目
-      - run: npm run build
+      # - run: npm run build
       # 发布npm包
       - run: npm publish 
         env:
