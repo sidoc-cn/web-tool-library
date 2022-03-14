@@ -226,6 +226,28 @@ export default function(){
         return data.substring(startIndex,endIndex);
     }
     Vue.filter('subString',subString);
+
+    
+    // 14. 下载文本内容
+    const downloadText = function(fileName,fileContent){
+
+        // 创建隐藏的可下载链接
+        var eleLink = document.createElement('a');
+        eleLink.download = fileName;
+        eleLink.style.display = 'none';
+
+        // 字符内容转变成blob地址
+        var blob = new Blob([fileContent]);
+        eleLink.href = URL.createObjectURL(blob);
+
+        // 触发点击
+        document.body.appendChild(eleLink); 
+        eleLink.click();
+        
+        // 然后移除
+        document.body.removeChild(eleLink);
+    }
+    window.downloadText = downloadText;
 }
 
 
