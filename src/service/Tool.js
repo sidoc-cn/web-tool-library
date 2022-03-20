@@ -19,8 +19,8 @@ export default function(){
 
     // 2.0 获取url中的参数；使用示例：getUrlParam('paramName') -------------------------------------------------------
     const getUrlParam = function(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
+        let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        let r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
     window.getUrlParam = getUrlParam;
@@ -105,7 +105,7 @@ export default function(){
 
     // 6.0 将毫秒转为日期时间字符串  -----------------------------------------------------------------------------
     const millisecondToDateTimeString = function (value) {
-        var d = new Date(value),
+        let d = new Date(value),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear(),
@@ -128,7 +128,7 @@ export default function(){
 
     // 7.0 将毫秒转为时间字符串 -----------------------------------------------------------------------------
     const millisecondToTimeString = function (value) {
-        var d = new Date(value),
+        let d = new Date(value),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear(),
@@ -158,15 +158,15 @@ export default function(){
     // 9.0>. 获取到期天数 ----------------------------------------------------------------------
     const getExpirationTime = function (value) {
     
-        var end_time = new Date(value).getTime(); // 毫秒数
-        var now_time = new Date().getTime();
+        let end_time = new Date(value).getTime(); // 毫秒数
+        let now_time = new Date().getTime();
 
-        var resetSec = end_time - now_time;
+        let resetSec = end_time - now_time;
 
-        var day = parseInt(resetSec/(60*60*24*1000));
-        var hour = parseInt(resetSec/(60*60*1000)%24);
-        var minu = parseInt(resetSec/(60*1000)%60);
-        var sec = parseInt(resetSec/1000%60);
+        let day = parseInt(resetSec/(60*60*24*1000));
+        let hour = parseInt(resetSec/(60*60*1000)%24);
+        let minu = parseInt(resetSec/(60*1000)%60);
+        let sec = parseInt(resetSec/1000%60);
         return day; 
     }
     window.getExpirationTime = getExpirationTime;
@@ -175,24 +175,48 @@ export default function(){
     Vue.filter('getExpirationTime',getExpirationTime);
 
     
-    // 9.1>. 获取剩余的时间长度 ----------------------------------------------------------------------
-    const getRemainingTime = function (value) {
+    // 9.1>. 获取指定时间到当前时间的差 ----------------------------------------------------------------------
+    const getDiffToToday = function (value) {
+        let end_time = new Date(value).getTime(); // 毫秒数
+        let now_time = new Date().getTime();
 
-        var end_time = new Date(value).getTime(); // 毫秒数
-        var now_time = new Date().getTime();
+        let resetSec = end_time - now_time;
 
-        var resetSec = end_time - now_time;
+        let day = parseInt(resetSec/(60*60*24*1000));
+        let hour = parseInt(resetSec/(60*60*1000)%24);
+        let minu = parseInt(resetSec/(60*1000)%60);
+        let sec = parseInt(resetSec/1000%60);
+        
+        if(day > 0){
+            return (day + "天后");
+        }else if(day < 0){
+            return (Math.abs(day) + "天前");
+        }
 
-        var day = parseInt(resetSec/(60*60*24*1000));
-        var hour = parseInt(resetSec/(60*60*1000)%24);
-        var minu = parseInt(resetSec/(60*1000)%60);
-        var sec = parseInt(resetSec/1000%60);
+        if(hour > 0){
+            return (hour + "小时后");
+        }else if(hour < 0){
+            return (Math.abs(hour) + "小时前");
+        }
+
+        if(minu > 0){
+            return (minu + "分钟后");
+        }else if(minu < 0){
+            return (Math.abs(minu) + "分钟前");
+        }
+
+        if(sec > 0){
+            return (sec + "秒后");
+        }else if(sec < 0){
+            return (Math.abs(sec) + "秒前");
+        }
+
         return day; 
     }
-    window.getRemainingTime = getRemainingTime;
-    Vue.prototype.getRemainingTime = getRemainingTime;
-    Vue.prototype.$common.getRemainingTime = getRemainingTime;
-    Vue.filter('getRemainingTime',getRemainingTime);
+    window.getDiffToToday = getDiffToToday;
+    Vue.prototype.getDiffToToday = getDiffToToday;
+    Vue.prototype.$common.getDiffToToday = getDiffToToday;
+    Vue.filter('getDiffToToday',getDiffToToday);
 
 
     // 10. 生成本地唯一的UUID（UUID本身有重复的机率，此函数可避免重复）
@@ -252,12 +276,12 @@ export default function(){
     const downloadText = function(fileName,fileContent){
 
         // 创建隐藏的可下载链接
-        var eleLink = document.createElement('a');
+        let eleLink = document.createElement('a');
         eleLink.download = fileName;
         eleLink.style.display = 'none';
 
         // 字符内容转变成blob地址
-        var blob = new Blob([fileContent]);
+        let blob = new Blob([fileContent]);
         eleLink.href = URL.createObjectURL(blob);
 
         // 触发点击

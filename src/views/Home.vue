@@ -10,6 +10,8 @@
          <div class="title">过滤器测试</div>
          <div>{{2121 | byteSizeConversion}}</div>
          <div>{{1 | subString(0,10)}}</div>
+         <div>{{'2022-03-08 12:43:16' | getDiffToToday}}</div>
+         <div>{{'2022-03-20 17:8:40' | getDiffToToday}}</div>
       </div>
       
       <div class="content vuePrototype">
