@@ -174,6 +174,26 @@ export default function(){
     Vue.prototype.$common.getExpirationTime = getExpirationTime;
     Vue.filter('getExpirationTime',getExpirationTime);
 
+    
+    // 9.1>. 获取剩余的时间长度 ----------------------------------------------------------------------
+    const getRemainingTime = function (value) {
+
+        var end_time = new Date(value).getTime(); // 毫秒数
+        var now_time = new Date().getTime();
+
+        var resetSec = end_time - now_time;
+
+        var day = parseInt(resetSec/(60*60*24*1000));
+        var hour = parseInt(resetSec/(60*60*1000)%24);
+        var minu = parseInt(resetSec/(60*1000)%60);
+        var sec = parseInt(resetSec/1000%60);
+        return day; 
+    }
+    window.getRemainingTime = getRemainingTime;
+    Vue.prototype.getRemainingTime = getRemainingTime;
+    Vue.prototype.$common.getRemainingTime = getRemainingTime;
+    Vue.filter('getRemainingTime',getRemainingTime);
+
 
     // 10. 生成本地唯一的UUID（UUID本身有重复的机率，此函数可避免重复）
     const uuid = function(){
