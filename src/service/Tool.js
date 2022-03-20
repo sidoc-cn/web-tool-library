@@ -31,18 +31,18 @@ export default function(){
 
     // 3.0 判空：判断变量是否为空或 -----------------------------------------------------------------------------------
     const isEmpty = function(value){
-    if(value === undefined){
-        return true;
-    }else if(value === null){
-        return true;
-    }else if(typeof value === "string" && value.trim() === ""){
-        return true;
-    }else if(typeof value === "number" && isNaN(value) === true){ 
-        return true;
-    }else if(typeof value === "number" && value === 0){
-        return true;
-    }
-    return false;
+        if(value === undefined){
+            return true;
+        }else if(value === null){
+            return true;
+        }else if(typeof value === "string" && value.trim() === ""){
+            return true;
+        }else if(typeof value === "number" && isNaN(value) === true){ 
+            return true;
+        }else if(typeof value === "number" && value === 0){
+            return true;
+        }
+        return false;
     }
     window.isEmpty = isEmpty;
     Vue.prototype.isEmpty = isEmpty;
@@ -177,6 +177,10 @@ export default function(){
     
     // 9.1>. 获取指定时间到当前时间的差 ----------------------------------------------------------------------
     const getDiffToToday = function (value) {
+        if(isEmpty(value)) {
+            return null;
+        }
+        
         let end_time = new Date(value).getTime(); // 毫秒数
         let now_time = new Date().getTime();
 
