@@ -23,6 +23,7 @@ export default function(){
         let r = window.location.search.substr(1).match(reg);
         if (r != null) return unescape(r[2]); return null;
     }
+    
     window.getUrlParam = getUrlParam;
     Vue.prototype.getUrlParam = getUrlParam;
     Vue.prototype.$common.getUrlParam = getUrlParam;
@@ -296,6 +297,15 @@ export default function(){
         document.body.removeChild(eleLink);
     }
     window.downloadText = downloadText;
+
+
+    // 15. 保留2位小数字（四舍五入）
+    const toFixed = function(value,numberDigits=2){
+        // 截取当前数据到小数点后两位
+        let realVal = parseFloat(value).toFixed(numberDigits);
+        return realVal
+    }
+    Vue.filter('toFixed',toFixed);
 }
 
 
