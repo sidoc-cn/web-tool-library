@@ -1,8 +1,8 @@
 # web-tool-library
 
-> dfdsafdaf
+> 路由path 必须与Vue文件的路径名称完全对应；
 > 
-> fdsafdf
+> 图片文件的路径必须与Vue文件的路径名称完全对
 
 ## JS原型方法
 ``` javascript
