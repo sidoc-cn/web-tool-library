@@ -4,6 +4,17 @@
 > 
 > 图片文件的路径必须与Vue文件的路径名称完全对
 
+#### 1. 基本情况
+
+ 项目基于 Vue3 + Element-plus + TypeScript 开发
+
+#### 2. Git配置
+使用Git克隆项目前，务必执行如下命令
+```shell
+git config --global core.autocrlf false
+```
+
+
 ## JS原型方法
 ``` javascript
 // 日期对象格式化
